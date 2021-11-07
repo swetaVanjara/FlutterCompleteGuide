@@ -3,7 +3,7 @@ import './question.dart';
 import './answer.dart';
 
 class Quiz extends StatelessWidget {
-  final VoidCallback answerQuestion;
+  final Function answerQuestion;
   final List<Map<String, Object>> questions;
   final int questionIndex;
 
@@ -15,10 +15,11 @@ class Quiz extends StatelessWidget {
       children: [
         Question(questions[questionIndex]['questionText'] as String),
         //add them into surrounding list as individual value . don't want to add a list into list but as value of to list only one list having without nested list
-        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
+            .map((answer) {
           return Answer(
-            answer,
-            answerQuestion,
+            answer['text'],
+            () => answerQuestion(answer['score']),
           );
         }).toList()
       ],
