@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './answer.dart';
-import './question.dart';
+import './quiz.dart';
+import './result.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   //value doesn't change when program runs. It can be initailse when load change initailly but don't change after.
 
   //store only address in memory.
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'What\'s your favourite color?',
       'answers': ['Black', 'Red', 'Green', 'White']
@@ -54,23 +54,13 @@ class _MyAppState extends State<MyApp> {
           title: Text('My First App'),
           backgroundColor: Colors.deepOrange,
         ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(questions[_questionIndex]['questionText'] as String),
-                  //add them into surrounding list as individual value . don't want to add a list into list but as value of to list only one list having without nested list
-                  ...(questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(
-                      answer,
-                      _answerQuestion,
-                    );
-                  }).toList()
-                ],
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questions: _questions,
+                questionIndex: _questionIndex,
               )
-            : Center(
-                child: Text('You did it!'),
-              ),
+            : Result(),
       ),
     );
   }
