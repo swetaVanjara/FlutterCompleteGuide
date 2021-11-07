@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './answer.dart';
 import './question.dart';
 
 // void main() {
@@ -40,21 +41,11 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(questions[_questionIndex]),
-            RaisedButton(
-              //answerQuestion()- not want to build starting just want to build when button is pressed. need to pass pointer
-              onPressed: _answerQuestion,
-              child: Text("Answer 1"),
-            ),
-            RaisedButton(
-              //annoymyous function bccz no name here.
-              onPressed: () {
-                print('Answer 2 choosen');
-              },
-              child: Text("Answer 2"),
-            ),
-            RaisedButton(
-              onPressed: () => print("Answer 3 choosen"),
-              child: Text("Answer 3"),
+            Answer(answerText: "Answer 1", selectHandler: _answerQuestion),
+            Answer(answerText: "Answer 2", selectHandler: _answerQuestion),
+            Answer(
+              answerText: "Answer 3",
+              selectHandler: _answerQuestion,
             ),
           ],
         ),
