@@ -12,7 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Text("Sweta test"),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My First App'),
+          backgroundColor: Colors.deepOrange,
+        ),
+        body: Center(
+          child: Text("Hello Shweta"),
+        ),
+      ),
     );
   }
 }
