@@ -6,11 +6,22 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
 
-  void answerQuestion() {
-    print('Answer choosen');
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+//_ - turns this class into private only use inside same file(main.dart)
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex++;
+      print(_questionIndex);
+    });
   }
 
   @override
@@ -27,10 +38,10 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text("The Question!"),
+            Text(questions[_questionIndex]),
             RaisedButton(
               //answerQuestion()- not want to build starting just want to build when button is pressed. need to pass pointer
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
               child: Text("Answer 1"),
             ),
             RaisedButton(
