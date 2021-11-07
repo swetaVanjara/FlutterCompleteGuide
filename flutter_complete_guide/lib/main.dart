@@ -9,6 +9,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
 
+  void answerQuestion() {
+    print('Answer choosen');
+  }
+
   @override
   Widget build(BuildContext context) {
     var questions = [
@@ -25,15 +29,19 @@ class MyApp extends StatelessWidget {
           children: [
             Text("The Question!"),
             RaisedButton(
-              onPressed: null,
+              //answerQuestion()- not want to build starting just want to build when button is pressed. need to pass pointer
+              onPressed: answerQuestion,
               child: Text("Answer 1"),
             ),
             RaisedButton(
-              onPressed: () {},
+              //annoymyous function bccz no name here.
+              onPressed: () {
+                print('Answer 2 choosen');
+              },
               child: Text("Answer 2"),
             ),
             RaisedButton(
-              onPressed: () {},
+              onPressed: () => print("Answer 3 choosen"),
               child: Text("Answer 3"),
             ),
           ],
