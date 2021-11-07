@@ -18,3 +18,20 @@ samples, guidance on mobile development, and a full API reference.
 1) Flutter Basic App(Quiz App)
 - all basic concepts
 
+const, final - value can't change 
+
+Final
+//value doesn't change when program runs. It can be initailse when load change initailly but don't change after // code compile value is uncleared // run time constant at a time writing we don't know the value
+
+Const - Compile time constant means it'll never change
+
+null value:
+
+
+
+
+
+
+
+
+
